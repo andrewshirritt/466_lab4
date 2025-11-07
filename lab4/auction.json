@@ -1,0 +1,122 @@
+[
+    {
+        "name": "Gulfstream II Jet",
+        "price": 4900000,
+        "description": "A private Gulfstream II jet, one of the most expensive items ever sold on eBay."
+    },
+    {
+        "name": "Lunch with Warren Buffett",
+        "price": 4570000,
+        "description": "A charity auction for a lunch with billionaire investor Warren Buffett."
+    },
+    {
+        "name": "Leonardo da Vinci's Codex Leicester",
+        "price": 30800000,
+        "description": "A 72-page manuscript by Leonardo da Vinci, purchased by Bill Gates."
+    },
+    {
+        "name": "The Town of Bridgeville, California",
+        "price": 1770000,
+        "description": "An entire town in California was auctioned off on eBay."
+    },
+    {
+        "name": "The 'Shoeless' Joe Jackson Baseball Bat",
+        "price": 577610,
+        "description": "A baseball bat used by Shoeless Joe Jackson, known as 'Black Betsy.'"
+    },
+    {
+        "name": "Ian Usher's Life",
+        "price": 384000,
+        "description": "A man sold his entire life, including his house, job, and friends, on eBay."
+    },
+    {
+        "name": "Action Comics No. 1",
+        "price": 3200000,
+        "description": "A rare comic book featuring the first appearance of Superman."
+    },
+    {
+        "name": "Honus Wagner Baseball Card",
+        "price": 3120000,
+        "description": "A T206 Honus Wagner baseball card, one of the most valuable sports cards ever."
+    },
+    {
+        "name": "The Town of Albert, Texas",
+        "price": 216000,
+        "description": "Another small town sold on eBay, located in Texas."
+    },
+    {
+        "name": "Gigayacht",
+        "price": 168000000,
+        "description": "A 405-foot luxury yacht sold on eBay, the most expensive item ever listed."
+    },
+    {
+        "name": "Original Hollywood Sign",
+        "price": 450000,
+        "description": "The original Hollywood sign letters, sold in an online auction."
+    },
+    {
+        "name": "Britney Spears' Chewed Gum",
+        "price": 14000,
+        "description": "A piece of chewing gum spat out by Britney Spears, sold on eBay."
+    },
+    {
+        "name": "The Domain 'business.com'",
+        "price": 7500000,
+        "description": "The domain name 'business.com,' sold in a private sale."
+    },
+    {
+        "name": "William Shatner's Kidney Stone",
+        "price": 25000,
+        "description": "A kidney stone passed by actor William Shatner, sold to benefit charity."
+    },
+    {
+        "name": "Elvis Presley's Hair",
+        "price": 115000,
+        "description": "A lock of hair from Elvis Presley, sold in an online auction."
+    },
+    {
+        "name": "Banksy's 'Girl with Balloon'",
+        "price": 1400000,
+        "description": "A famous painting by Banksy that self-destructed after being sold."
+    },
+    {
+        "name": "A Grilled Cheese Sandwich with Virgin Mary Image",
+        "price": 28000,
+        "description": "A grilled cheese sandwich bearing an image resembling the Virgin Mary."
+    },
+    {
+        "name": "Albert Einstein's 'God Letter'",
+        "price": 2900000,
+        "description": "A letter written by Albert Einstein discussing his views on God and religion."
+    },
+    {
+        "name": "James Bond's Aston Martin DB5",
+        "price": 4600000,
+        "description": "The Aston Martin DB5 used in the James Bond film 'Goldfinger.'"
+    },
+    {
+        "name": "Napoleon's Hat",
+        "price": 2400000,
+        "description": "One of Napoleon Bonaparte's bicorne hats, sold at auction."
+    },
+    {
+        "name": "J.K. Rowling's Chair",
+        "price": 394000,
+        "description": "A chair used by J.K. Rowling while writing the first two Harry Potter books."
+    },
+    {
+        "name": "Andy Warhol's 'Silver Car Crash (Double Disaster)'",
+        "price": 105000000,
+        "description": "A painting by Andy Warhol, one of the most expensive works of art sold at auction."
+    },
+    {
+        "name": "Michael Jackson's Thriller Jacket",
+        "price": 1800000,
+        "description": "The red and black jacket worn by Michael Jackson in the 'Thriller' music video."
+    },
+    {
+        "name": "Pope Francis' Harley-Davidson",
+        "price": 327000,
+        "description": "A Harley-Davidson motorcycle once owned by Pope Francis."
+    }
+]
