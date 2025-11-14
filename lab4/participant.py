@@ -35,6 +35,9 @@ class Seller(Participant):
     def vote(self):
         pass
 
+    def run(self):
+        self.logger.info(f"64818:Accepted connection from coordinator (port {self.port}), waiting for vote request.")
+
 
 class Buyer(Participant):
 
@@ -43,3 +46,6 @@ class Buyer(Participant):
 
     def vote(self):
         pass
+
+    def run(self):
+        self.logger.info(f"64818:Accepted connection from coordinator (port {self.port}), waiting for vote request.")

@@ -1,5 +1,6 @@
 import socket
 import random
+import transaction_pb2
 from abc import ABC, abstractmethod
 
 from coordinator import Coordinator
@@ -20,30 +21,58 @@ class Server:
     
 
     def run(self):
-        tcp = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        tcp.bind(self.serv_addr)
-        tcp.listen(1)
+        tcp1 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        tcp2 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        tcp1.bind(self.serv_addr)
+        tcp2.bind(self.serv_addr)
+        tcp1.listen(1)
+        tcp2.listen(1)
+        self.logger.info("Server listening on ('127.0.0.1', 9001)")
+
 
         sell = False
         buy = False
+        msg = transaction_pb2.Transaction()
         while not buy or not sell:
-            conn, addr = tcp.accept()
-            msg = conn.recv(1024)
-            if msg == b'buy':
+            conn1, addr1 = tcp1.accept()
+            conn2, addr2 = tcp2.accept()
+
+
+            packet = conn1.recv(1024)
+            msg.ParseFromString(packet)
+
+
+            if msg.type == 0:
+
                 buy = True
-                print("buy")
-                rand_port = str(self._generate_port())
 
-                conn.send(rand_port.encode())
 
-            if msg == b'sell':
+                rand_port1 = str(self._generate_port())
+                conn1.send(rand_port1.encode())
+
+            if msg.type == 1:
+                price = msg.price
+                name = msg.name
+                self.logger.info(f"Received request to auction item: {name}")
+
                 sell = True
-                print("sell")
-                rand_port = str(self._generate_port())
 
-                conn.send(rand_port.encode())
-            conn.close()
+                rand_port2 = str(self._generate_port())
+                conn1.send(rand_port2.encode())
+
+            tid = 1
 
 
 
-        tcp.close()
+
+
+        # conn, addr = tcp.accept()
+        msg.price = price
+        msg.name = name
+        # conn.send(msg.SerializeToString())
+
+        self.logger.info(f"Initiating transaction id {tid} with 1 buyers.")
+        conn1.close()
+        conn2.close()
+        tcp1.close()
+        tcp2.close()
