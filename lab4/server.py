@@ -21,12 +21,9 @@ class Server:
     
 
     def run(self):
-        tcp1 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        tcp2 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        tcp1.bind(self.serv_addr)
-        tcp2.bind(self.serv_addr)
-        tcp1.listen(1)
-        tcp2.listen(1)
+        tcp = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        tcp.bind(self.serv_addr)
+        tcp.listen(1)
         self.logger.info("Server listening on ('127.0.0.1', 9001)")
 
 
@@ -34,11 +31,9 @@ class Server:
         buy = False
         msg = transaction_pb2.Transaction()
         while not buy or not sell:
-            conn1, addr1 = tcp1.accept()
-            conn2, addr2 = tcp2.accept()
+            conn, addr = tcp.accept()
 
-
-            packet = conn1.recv(1024)
+            packet = conn.recv(1024)
             msg.ParseFromString(packet)
 
 
@@ -46,9 +41,8 @@ class Server:
 
                 buy = True
 
-
                 rand_port1 = str(self._generate_port())
-                conn1.send(rand_port1.encode())
+                conn.send(rand_port1.encode())
 
             if msg.type == 1:
                 price = msg.price
@@ -58,21 +52,20 @@ class Server:
                 sell = True
 
                 rand_port2 = str(self._generate_port())
-                conn1.send(rand_port2.encode())
+                conn.send(rand_port2.encode())
 
             tid = 1
 
-
+            conn.close()
 
 
 
         # conn, addr = tcp.accept()
         msg.price = price
         msg.name = name
+        self.logger.info(msg)
         # conn.send(msg.SerializeToString())
 
         self.logger.info(f"Initiating transaction id {tid} with 1 buyers.")
-        conn1.close()
-        conn2.close()
-        tcp1.close()
-        tcp2.close()
+
+        tcp.close()
