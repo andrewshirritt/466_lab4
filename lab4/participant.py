@@ -32,11 +32,19 @@ class Seller(Participant):
     def __init__(self, transaction_id, port):
         super().__init__(transaction_id, port)
 
+
     def vote(self):
         pass
 
     def run(self):
-        self.logger.info(f"64818:Accepted connection from coordinator (port {self.port}), waiting for vote request.")
+
+        tcp = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+        tcp.bind(("127.0.0.1", int(self.port)))
+        tcp.listen(1)
+
+        conn, addr = tcp.accept()
+        self.logger.info(f"{self.port}:Accepted connection from coordinator (port {addr[1]}), waiting for vote request.")
 
 
 class Buyer(Participant):
@@ -48,4 +56,9 @@ class Buyer(Participant):
         pass
 
     def run(self):
-        self.logger.info(f"64818:Accepted connection from coordinator (port {self.port}), waiting for vote request.")
+        tcp = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        tcp.bind(("127.0.0.1", int(self.port)))
+        self.logger.info(f"{self.port}")
+        tcp.listen(1)
+        conn, addr = tcp.accept()
+        self.logger.info(f"{self.port}:Accepted connection from coordinator (port {addr[1]}), waiting for vote request.")

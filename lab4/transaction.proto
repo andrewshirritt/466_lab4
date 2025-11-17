@@ -6,6 +6,7 @@ syntax = "proto2";
 enum Type {
     buy = 0;
     sell = 1;
+    request = 2;
 }
 
 // Publisher to Server -> initialize topic

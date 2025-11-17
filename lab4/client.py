@@ -40,7 +40,7 @@ class SellerClient(Client):
         self.logger.info(f"Listing item: {item["name"]} for ${item["price"]} (item 1/6)")
         tcp.send(send)
         port = tcp.recv(1024).decode()
-        self.logger.info(f"Connection from ('127.0.0.1',{port})")
+        self.logger.info(f"hi {port}")
         tcp.close()
         s = Seller(1, port)
         s.run()
@@ -67,12 +67,27 @@ class BuyerClient(Client):
         tcp.send(send)
         port = tcp.recv(1024).decode()
         tcp.close()
-        self.logger.info(f"Connection from ('127.0.0.1',{port})")
-        # tcp = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        # tcp.connect(self.serv_addr)
-        # packet = tcp.recv(1024)
-        # msg.ParseFromString(packet)
-        # self.logger.info(msg)
+
+
+
+        while True:
+            tcp = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            tcp.connect(self.serv_addr)
+
+            msg1 = transaction_pb2.Transaction()
+            msg1.type = 2
+            msg1 = msg1.SerializeToString()
+            tcp.send(msg1)
+            recv1 = tcp.recv(1024)
+            if recv1 == b'':
+                continue
+            else:
+                break
+
+
+        msg.ParseFromString(recv1)
+        self.logger.info(msg)
+        tcp.close()
         b = Buyer(1, port, 1)
         b.run()
 
