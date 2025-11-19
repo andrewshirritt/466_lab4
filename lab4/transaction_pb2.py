@@ -24,7 +24,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x11transaction.proto\"?\n\x0bTransaction\x12\x13\n\x04type\x18\x01 \x02(\x0e\x32\x05.Type\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\r\n\x05price\x18\x03 \x01(\x05*&\n\x04Type\x12\x07\n\x03\x62uy\x10\x00\x12\x08\n\x04sell\x10\x01\x12\x0b\n\x07request\x10\x02')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x11transaction.proto\"?\n\x0bTransaction\x12\x13\n\x04type\x18\x01 \x02(\x0e\x32\x05.Type\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\r\n\x05price\x18\x03 \x01(\x05*F\n\x04Type\x12\x07\n\x03\x62uy\x10\x00\x12\x08\n\x04sell\x10\x01\x12\x0b\n\x07request\x10\x02\x12\n\n\x06\x63ommit\x10\x03\x12\t\n\x05\x61\x62ort\x10\x04\x12\x07\n\x03\x61\x63k\x10\x05')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -32,7 +32,7 @@ _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'transaction_pb2', _globals)
 if not _descriptor._USE_C_DESCRIPTORS:
   DESCRIPTOR._loaded_options = None
   _globals['_TYPE']._serialized_start=86
-  _globals['_TYPE']._serialized_end=124
+  _globals['_TYPE']._serialized_end=156
   _globals['_TRANSACTION']._serialized_start=21
   _globals['_TRANSACTION']._serialized_end=84
 # @@protoc_insertion_point(module_scope)

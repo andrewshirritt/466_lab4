@@ -45,7 +45,7 @@ class Server:
             if msg.type == 0:
 
                 buy = True
-                self.logger.info(f"Connection from ('127.0.0.1',{addr})")
+                self.logger.info(f"Connection from ({addr})")
 
                 rand_port1 = str(self._generate_port())
                 ports["buyer"] = rand_port1
@@ -55,7 +55,7 @@ class Server:
             if msg.type == 1:
                 price = msg.price
                 name = msg.name
-                self.logger.info(f"Connection from ('127.0.0.1',{addr})")
+                self.logger.info(f"Connection from ({addr})")
                 self.logger.info(f"Received request to auction item: {name}")
 
                 sell = True

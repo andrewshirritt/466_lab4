@@ -37,10 +37,9 @@ class SellerClient(Client):
         msg.name = item["name"]
         msg.price = self._set_price(item["price"])
         send = msg.SerializeToString()
-        self.logger.info(f"Listing item: {item["name"]} for ${item["price"]} (item 1/6)")
+        self.logger.info(f"Listing item: {item["name"]} for ${msg.price} (item 1/6)")
         tcp.send(send)
         port = tcp.recv(1024).decode()
-        self.logger.info(f"hi {port}")
         tcp.close()
         s = Seller(1, port)
         s.run()
@@ -88,7 +87,7 @@ class BuyerClient(Client):
         msg.ParseFromString(recv1)
         self.logger.info(msg)
         tcp.close()
-        b = Buyer(1, port, 1)
+        b = Buyer(1, port, msg)
         b.run()
 
 

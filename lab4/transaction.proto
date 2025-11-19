@@ -7,6 +7,9 @@ enum Type {
     buy = 0;
     sell = 1;
     request = 2;
+    commit = 3;
+    abort = 4;
+    ack = 5;
 }
 
 // Publisher to Server -> initialize topic
