@@ -69,7 +69,27 @@ class Coordinator:
 
 
             else:
-                pass
+                self.logger.info(f"Participant 0 (port {int(self.ports["buyer"])}) voted to abort.")
+                self.logger.info("Not all participants voted to commit, sending global abort.")
+                tcp.send(msg.SerializeToString())
+                packet = tcp.recv(1024)
+                ack.ParseFromString(packet)
+                if ack.type == 5:
+                    self.logger.info(f"Received acknowledgment from participant (port {int(self.ports["buyer"])}).")
+                else:
+                    self.logger.info("fail")
+                tcp1.send(msg.SerializeToString())
+                packet = tcp1.recv(1024)
+                ack.ParseFromString(packet)
+                if ack.type == 5:
+                    self.logger.info(f"Received acknowledgment from participant (port {int(self.ports["seller"])}).")
+                    packet = tcp.recv(1024)
+                    msg.ParseFromString(packet)
+                    self._save_transaction(msg.name, msg.price, False)
+                    self.logger.info(f"Saving transaction result: item={msg.name}, price={msg.price}, success=Fail")
+                else:
+                    self.logger.info("fail")
+
         else:
             pass
 

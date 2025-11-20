@@ -64,6 +64,9 @@ class Seller(Participant):
             self.conn.send(ack.SerializeToString())
         else:
             self.abort()
+            ack = transaction_pb2.Transaction()
+            ack.type = 5
+            self.conn.send(ack.SerializeToString())
 
 
 class Buyer(Participant):
@@ -112,4 +115,7 @@ class Buyer(Participant):
             self.conn.send(self.item.SerializeToString())
         else:
             self.abort()
-
+	    ack = transaction_pb2.Transaction()
+            ack.type = 5
+            self.conn.send(ack.SerializeToString())
+            self.conn.send(self.item.SerializeToString())
