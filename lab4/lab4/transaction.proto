@@ -1,0 +1,22 @@
+syntax = "proto2";
+
+
+// python -m grpc_tools.protoc transaction.proto --proto_path=. --python_out=.
+
+enum Type {
+    buy = 0;
+    sell = 1;
+    request = 2;
+    commit = 3;
+    abort = 4;
+    ack = 5;
+}
+
+// Publisher to Server -> initialize topic
+message Transaction {
+    required Type type = 1;
+    optional string name = 2;
+    optional int32 price = 3;
+
+}
+
